@@ -42,7 +42,7 @@ function App() {
       console.log(`${imdbID} is the imdbID`)
       console.log(typeof(imdbID))
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${apikey}&i=tt00g${imdbID}`
+        `http://www.omdbapi.com/?apikey=${apikey}&i=tt00${imdbID}`
       );
       const data = await response.json();
       console.log(data)
