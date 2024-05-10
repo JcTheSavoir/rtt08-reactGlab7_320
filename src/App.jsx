@@ -32,13 +32,15 @@ function App() {
       // Create empty array to add numbers too
       let setOfNums = []
       // for loop to add 8 numbers to the array
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 8; i++) {
         let randomNumbers = getRandomNumberIMDB(0, 9)
         const addNums = setOfNums.push(randomNumbers)
       }
+
       // Concatenate the array of numbers into a single number
-      const imdbID = +setOfNums.join("");
+      const imdbID = setOfNums.join("");
       console.log(`${imdbID} is the imdbID`)
+      console.log(typeof(imdbID))
       const response = await fetch(
         `http://www.omdbapi.com/?apikey=${apikey}&i=tt${imdbID}`
       );
@@ -47,12 +49,12 @@ function App() {
       console.log(`above is the data returned`)
       // Check if API returned an object with the Response: "False" key value pair
       // and the imdbID is over 8 digits; if so break the loop by setting movie to default
-      if (data.Response == "False" && imdbID >= 100000000) {
+      if ((data.Error === "Error getting data."|| data.Error === "Incorrect IMDb ID.") && imdbID >= 100000000) {
         getMovie("The Matrix")
-      } else if (data.Response == "False"){
+      } else if (data.Error === "Error getting data." || data.Error === "Incorrect IMDb ID."){
         //If only data.Response is equal to "False", rerun getRandomMovie() 
         console.log(`elseif triggered`)
-        getRandomMovie()
+        await getRandomMovie()
       } else {
         //If Neither are true, then setMovie to the response
         setMovie(data)
