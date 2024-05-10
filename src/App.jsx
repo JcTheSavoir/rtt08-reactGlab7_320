@@ -32,7 +32,7 @@ function App() {
       // Create empty array to add numbers too
       let setOfNums = []
       // for loop to add 8 numbers to the array
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 6; i++) {
         let randomNumbers = getRandomNumberIMDB(0, 9)
         const addNums = setOfNums.push(randomNumbers)
       }
@@ -42,7 +42,7 @@ function App() {
       console.log(`${imdbID} is the imdbID`)
       console.log(typeof(imdbID))
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${apikey}&i=tt${imdbID}`
+        `http://www.omdbapi.com/?apikey=${apikey}&i=tt00g${imdbID}`
       );
       const data = await response.json();
       console.log(data)
