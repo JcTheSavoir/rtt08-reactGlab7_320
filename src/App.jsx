@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 
 import Form from './components/Form'
@@ -48,7 +46,7 @@ function App() {
       console.log(data)
       console.log(`above is the data returned`)
       // Check if API returned an object with the Response: "False" key value pair
-      // and the imdbID is over 8 digits; if so break the loop by setting movie to default
+      // and the imdbID is over 6 digits; if so break the loop by setting movie to default
       if ((data.Error === "Error getting data."|| data.Error === "Incorrect IMDb ID.") && imdbID >= 1000000) {
         getMovie("The Matrix")
       } else if (data.Error === "Error getting data." || data.Error === "Incorrect IMDb ID."){

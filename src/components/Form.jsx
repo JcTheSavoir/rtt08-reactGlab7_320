@@ -20,10 +20,11 @@ const Form = (props) => {
   }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="searchTerm" onChange={handleChange} value={formData.searchTerm} />
-            <input type="submit" value="submit" />
+    <div className='formContainer'>
+      <h1 className='formTitle'>Enter Search Term Below</h1>
+        <form className='formItself' onSubmit={handleSubmit}>
+            <input className='formSearch' type="text" name="searchTerm" onChange={handleChange} value={formData.searchTerm} />
+            <button className='formButton' type="submit" value="submit">Submit</button>
         </form>
     </div>
   )
